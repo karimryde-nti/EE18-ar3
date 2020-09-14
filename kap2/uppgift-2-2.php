@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SVar från formulär</title>
+    <title>Svar från formulär</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
