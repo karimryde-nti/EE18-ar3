@@ -13,17 +13,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tal till text</title>
+    <title>Läs en textfil</title>
     <link rel="stylesheet" href="https://cdn.rawgit.com/Chalarangelo/mini.css/v3.0.1/dist/mini-default.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Spara texten i en fil</h1>
+        <h1>Läs en textfil</h1>
         <form action="#" method="POST">
-            <label for="text">Ange din text</label>
+            <label for="text">Ange filens namn</label>
             <input type="text" name="filnamn">
-            <button type="submit" class="btn btn-primary">Spara</button>
+            <button type="submit" class="btn btn-primary">Hämta</button>
         </form>
         <?php
         // Finns data?
