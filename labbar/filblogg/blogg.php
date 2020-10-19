@@ -1,6 +1,6 @@
 <?php
 /**
- * En enkel blogg fär inlägg lagras i en textfil.
+ * En enkel blogg där inlägg lagras i en textfil.
  * 
 * PHP version 7
 * @category   Webbapp
