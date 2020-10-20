@@ -35,11 +35,17 @@
                 <button class="btn btn-primary">Spara inlägg</button>
             </form>
             <?php
-            // Ta emot data från formuläret
+            /*             // Ta emot data från formuläret
             if (isset($_POST["inlagg"])) {
         
                 // Skapa en intern variabel med datat
-                $texten = $_POST["inlagg"];
+                $texten = $_POST["inlagg"]; */
+
+            // Läs in från formuläret och rensa från hot
+            $texten = filter_input(INPUT_POST, "inlagg", FILTER_SANITIZE_STRING);
+
+            // Om vi får data
+            if ($texten) {
 
                 // Förberedd texten för HTML-utskrift
                 $textenMedBr = str_replace("\n", "<br>", $texten);
@@ -51,17 +57,29 @@
                 // Vad heter textfilen?
                 $filnamn = "blogg.txt";
 
-                // Steg 1: Öppna textfilen för skriva
-                $handtag = fopen($filnamn, "a");
+                // Är filen skrivbar?
+                if (is_writable($filenamn)) {
 
-                // Steg 2: Skriv texten
-                fwrite($handtag, "<p>$datumstämpel<br>$textenMedBr</p>\n");
+                    // Steg 1: får vi öppna filen?
+                    if (!$handle = fopen($filenamn, 'a')) {
+                        echo "<p class=\"alert alert-warning\">Filen gick att öppna. Avbryter...</p>";
+                        exit;
+                    }
 
-                // Steg 3: Stäng ned anslutningen
-                fclose($handtag);
+                    // Steg 2: går det bra att skriva i filen?
+                    if (fwrite($handtag, "<p>$datumstämpel<br>$textenMedBr</p>\n") === FALSE) {
+                        echo "<p class=\"alert alert-warning\">Kan inte skriva i filen. Avbryter...</p>";
+                        exit;
+                    }
 
-                // Skriv ut en bekräftelse
-                echo "<p class=\"alert alert-success\">Inlägget har sparats!</p>";
+                    // Steg 3: Stäng ned anslutningen
+                    fclose($handtag);
+
+                    // Skriv ut en bekräftelse
+                    echo "<p class=\"alert alert-success\">Inlägget har sparats!</p>";
+                } else {
+                    echo "<p class=\"alert alert-warning\">Filen är inte skrivbar.</p>";
+                }
             }
             ?>
         </main>
