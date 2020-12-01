@@ -6,10 +6,10 @@
 * @license    PHP CC
 */
 
-$user = "karye";
-$db = "karye";
+$user = "labbar";
+$db = "labbar";
 $host = "localhost";
-$pass = "bt7KD6tsXPohvrz4";
+$pass = "b7chjynqPLStEzOT";
 
 // Logga in på mysql-server och välj databas
 $conn = new mysqli($host, $user, $pass, $db);
