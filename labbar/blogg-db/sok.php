@@ -25,36 +25,44 @@ include "./resurser/conn.php";
         <nav>
             <ul class="nav nav-tabs">
                 <li class="nav-item"><a class="nav-link" href="./lasa.php">Läsa</a></li>
-                <li class="nav-item"><a class="nav-link active" href="./skriva.php">Skriva</a></li>
-                <li class="nav-item"><a class="nav-link" href="./sok.php">Sök</a></li>
+                <li class="nav-item"><a class="nav-link" href="./skriva.php">Skriva</a></li>
+                <li class="nav-item"><a class="nav-link active" href="./sok.php">Sök</a></li>
             </ul>
         </nav>
         <form action="#" method="POST">
-            <label>Ange rubrik <input type="text" name="header"></label>
-            <label>Ange text <textarea name="postText"></textarea></label>
-            <button>Spara</button>
+            <label>Ange sökterm <input type="text" name="sökterm"></label>
+            <button>Sök</button>
         </form>
         <?php
         // Ta emot det som skickas
-        $header = filter_input(INPUT_POST, 'header', FILTER_SANITIZE_STRING);
-        $postText = filter_input(INPUT_POST, 'postText', FILTER_SANITIZE_STRING);
+        $sökterm = filter_input(INPUT_POST, 'sökterm', FILTER_SANITIZE_STRING);
 
         // Om data finns..
-        if ($header && $postText) {
+        if ($sökterm) {
+
             // SQL-satsen
-            $sql = "INSERT INTO post (header, postText) VALUES ('$header', '$postText')";
+            $sql = "SELECT * FROM post WHERE header LIKE '%$sökterm%' OR postText LIKE '%$sökterm%'";
 
             // Steg 2: nu kör vi sql-satsen
             $result = $conn->query($sql);
 
-            // Gick det bra att köra SQL-satsen?
+            // Steg 3: gick det bra att köra SQL-satsen?
             if (!$result) {
-                die("Något blev fel med SQL-satsen");
+                die("Något blev fel med SQL-satsen" . $conn->error);
             } else {
-                echo "<p>Inlägget har registrerats</p>";
+                echo "<p class=\"alert alert-success\">Hittade " . $result->num_rows . " inlägg</p>";
             }
 
-            // Steg 3: Stänga ned anslutningen
+            // Steg 3: presentera resultatet
+            while ($rad = $result->fetch_assoc()) {
+                echo "<div class=\"inlägg\">";
+                echo "<h5>$rad[header]</h5>";
+                echo "<h6>$rad[postDate]</h6>";
+                echo "<p>$rad[postText]</p>";
+                echo "</div>";
+            }
+
+            // Steg 4: stänga ned anslutningen
             $conn->close();
         }
         ?>
