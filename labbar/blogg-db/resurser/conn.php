@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 
 // Inloggningsuppgifter till vårt databas
 $host = "localhost";
-$db = "blogg";
+$db = "blogg_db";
 $user = "blogg";
 $pass = "sChS2cNOKruziHDt";
 

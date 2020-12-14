@@ -1,5 +1,4 @@
 <?php
-
 /**
  * En enkel blogg som använder en databas
  * 
@@ -17,16 +16,16 @@ include "./resurser/conn.php";
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Blogg</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <div class="kontainer">
         <h1>Min blogg</h1>
         <nav>
             <ul class="nav nav-tabs">
-                <li class="nav-item"><a class="nav-link" href="./lasa.php">Läsa</a></li>
-                <li class="nav-item"><a class="nav-link active" href="./skriva.php">Skriva</a></li>
-                <li class="nav-item"><a class="nav-link" href="./sok.php">Sök</a></li>
+                <li class="nav-item"><a class="nav-link" href="../lasa.php">Läsa</a></li>
+                <li class="nav-item"><a class="nav-link active" href="./admin/skriva.php">Skriva</a></li>
+                <li class="nav-item"><a class="nav-link" href="../sok.php">Sök</a></li>
             </ul>
         </nav>
         <form action="#" method="POST">
