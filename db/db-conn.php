@@ -7,7 +7,7 @@
 */
 
 $user = "labbar";
-$db = "labbar";
+$db = "labbar_db";
 $host = "localhost";
 $pass = "b7chjynqPLStEzOT";
 
