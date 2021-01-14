@@ -21,6 +21,17 @@ include "./resurser/conn.php";
     <div class="kontainer">
         <header>
             <h1>Inloggning</h1>
+            <nav>
+                <ul class="nav nav-tabs">
+                    <?php if (isset($_SESSION["anamn"])) { ?>
+                        <li class="nav-item"><a class="nav-link" href="./logout.php">Logga ut</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./lista.php">Lista</a></li>
+                    <?php } else { ?>
+                        <li class="nav-item"><a class="nav-link" href="./login.php">Logga in</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="./registrera.php">Registrera</a></li>
+                    <?php } ?>
+                </ul>
+            </nav>
         </header>
         <main>
             <form action="#" method="post">

@@ -35,6 +35,12 @@ main {
     color: #7b7b7b;
 }
 
+nav .anamn {
+    margin-left: auto;
+    padding: 10px;
+    font-weight: bold;
+}
+
 form {
     background: #ffffffa3;
     border: 1px solid #a0a0a0;
