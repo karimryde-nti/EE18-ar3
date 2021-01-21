@@ -19,20 +19,20 @@ if (!isset($_SESSION["anamn"])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Utloggning</title>
+    <title>CRUD</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="kontainer">
         <header>
-            <h1>Utloggning</h1>
+            <h1>CRUD</h1>
             <nav>
                 <ul class="nav nav-tabs">
                     <?php if (isset($_SESSION["anamn"])) { ?>
                         <li class="nav-item"><a class="nav-link" href="./logout.php">Logga ut</a></li>
                         <li class="nav-item"><a class="nav-link active" href="./lista.php">Lista</a></li>
-                        <li class="nav-item anamn"><?php echo $_SESSION["anamn"] ?></li>
+                        <li class="nav-item anamn"><?php echo $_SESSION["anamn"] . " (" . $_SESSION["antal"] . ")" ?></li>
                     <?php } else { ?>
                         <li class="nav-item"><a class="nav-link" href="./login.php">Logga in</a></li>
                         <li class="nav-item"><a class="nav-link" href="./registrera.php">Registrera</a></li>
@@ -50,7 +50,7 @@ if (!isset($_SESSION["anamn"])) {
                 if (!$result) {
                     die("Något gick fel med SQL-satsen: " . $conn->error);
                 } else {
-                    echo "<p class=\"alert alert-success\">Hämtade " . $result->num_rows . " användare</p>";
+                    echo "<p class=\"alert alert-success\">Hitade " . $result->num_rows . " användare</p>";
                 }
 
                 // Steg 3: presentera resultatet

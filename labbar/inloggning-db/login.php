@@ -14,14 +14,14 @@ session_start();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Inloggning</title>
+    <title>CRUD</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="kontainer">
         <header>
-            <h1>Inloggning</h1>
+            <h1>CRUD</h1>
             <nav>
                 <ul class="nav nav-tabs">
                     <?php if (isset($_SESSION["anamn"])) { ?>
@@ -62,11 +62,20 @@ session_start();
 
                     // Kontrollera lösenordet
                     if (password_verify($lösen, $hash)) {
+
                         // Inloggad!
                         echo "<p class=\"alert alert-success\">Du är inloggad!</p>";
 
                         // Skapa en sessionsvariabel
                         $_SESSION["anamn"] = $anamn;
+
+                        // Räkna antal
+                        $antal = $rad['antal'] + 1;
+
+                        // Registrera ny inloggning
+                        $sql = "UPDATE user SET antal = '$antal' WHERE id = $rad[id]";
+                        $conn->query($sql);
+                        $_SESSION["antal"] = $antal;
 
                         // Hoppa till sidan lista
                         header("Location: ./lista.php");
