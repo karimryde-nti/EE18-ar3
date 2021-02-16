@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>querySelector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="kontainer">
+        <h1>Träna på läsa och ändra element på webbsidan</h1>
+
+        <h2>Input</h2>
+        <label>Ange kodord <input class="kodord" type="text"></label>
+        <button type="button">Skicka</button>
+
+        <h2>Output</h2>
+        <label>Svar <textarea class="svar"></textarea></label>
+    </div>
+    <script>
+        // Element vi använder
+        const eRutaKodord = document.querySelector(".kodord");
+        const eRutaSvar = document.querySelector(".svar");
+        const eKnapp = document.querySelector("button");
+
+        // Läs av innehållet i input-rutan efter man klickat på knappen
+        eKnapp.addEventListener("click", function() {
+
+            // Läsa av input-rutan
+            var kodord = eRutaKodord.value;
+            console.log(kodord);
+
+            // Om kordord stämmer skriver 1:a versen
+            if (kodord = "123") {
+                eRutaSvar.value = "Ja visst gör det ont när knoppar brister." +
+                                    "Varför skulle annars våren tveka?" +
+                                    "Varför skulle all vår heta längtan " +
+                                    "bindas i det frusna bitterbleka?" +
+                                    "Höljet var ju knoppen hela vintern." +
+                                    "Vad är det för nytt, som tär och spränger?" +
+                                    "Ja visst gör det ont när knoppar brister," +
+                                    "ont för det som växer" +
+                                    "och det som stänger.";
+            }
+        });
+    </script>
+</body>
+</html>
