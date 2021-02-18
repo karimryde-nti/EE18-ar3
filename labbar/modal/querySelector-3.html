@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>querySelector() och value</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="kontainer">
+        <h1>Smileys</h1>
+        <h2>Input</h2>
+        <label>Ange text <input class="text" type="text"></label>
+        <button>Ny rad</button>
+        <button class="töm">Töm</button>
+        <br>
+
+        <button id="glad">😀</button>
+        <button id="klown">🤡</button>
+
+        <h2>Output</h2>
+        <label>Svar <textarea class="svar" cols="30" rows="10" readonly></textarea>
+        </label>
+    </div>
+    <script>
+        // Element som används
+        const eRutaText = document.querySelector("input");
+        const eKnapp = document.querySelector("button");
+        const eTöm = document.querySelector(".töm");
+        const eGlad = document.querySelector("#glad");
+        const eKlown = document.querySelector("#klown");
+        const eTextarea = document.querySelector("textarea");
+
+        // Något händer när man klickar på knappen
+        eKnapp.addEventListener("click", function() {
+            // Läsa av input
+            var text = eRutaText.value;
+
+            // Skriva i textarea
+            eTextarea.value += text + "\n";    // eTextarea.value = eTextarea.value + text;
+
+            // Töm input-rutan
+            eRutaText.value = null;
+        });
+
+        eTöm.addEventListener("click", function() {
+            eTextarea.value = null;
+        })
+
+        eGlad.addEventListener("click", function() {
+            var glad = "😀";
+            eTextarea.value += smiley;
+        });
+
+        eKlown.addEventListener("click", function() {
+            eTextarea.value += "🤡";
+        });
+    </script>
+</body>
