@@ -54,7 +54,6 @@
             keyboard: false
         });
 
-
         // Lyssna på när eGeoModal öppnas
         // och byta ut texten
         eGeoModal.addEventListener("show.bs.modal", function() {
@@ -69,15 +68,17 @@
                 '<input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Lösenord">'; */
 
                 // vi skall göra ett anrop mot http://ip-api.com
-            fetch("http://ip-api.com/json") // Hämta
-                .then(response => response.json()) // Packa upp paketet
-                .then(data => { // Nu gör vi något...
-                    console.log(data.country); // Vilket land är besökaren ifrån
-                    console.log(data.city); // Vilket stad är besökaren ifrån
+            fetch("http://ip-api.com/json")         // Hämta
+                .then(response => response.json())  // Packa upp paketet
+                .then(data => {                     // Nu gör vi något...
+                    console.log(data.country);      // Vilket land?
+                    console.log(data.city);         // Vilket stad?
                     eModalBody.innerHTML =  `<p>${data.country}</p>` + 
                                             `<p>${data.city}</p>`;
                 })
         });
+
+        myModal.show();
     </script>
 </body>
 </html>
