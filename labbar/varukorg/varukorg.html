@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Varukorg</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./varukorg.css">
+</head>
+<body>
+    <div class="kontainer">
+        <h1>Varukorg</h1>
+        <div class="kol-4">
+            <h3>Produkt</h3>
+            <h3>Pris</h3>
+            <h3>Antal</h3>
+            <h3>Summa</h3>
+
+            <p class="vara"><img src="https://www.electrokit.com/uploads/productimage/41018/41018074-1-300x225.jpg" alt="Raspberry Pi Pico"> Raspberry Pi Pico</p>
+            <p class="pris">49</p>
+            <p class="kol-3">
+                <button class="minus"><i class="bi bi-dash-circle"></i></button>
+                <input class="antal" type="text">
+                <button class="plus"><i class="bi bi-plus-circle"></i></button>
+            </p>
+            <p class="summa"></p>
+        </div>
+    </div>
+    <script src="varukorg.js"></script>
+</body>
+</html>
