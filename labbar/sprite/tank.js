@@ -8,7 +8,7 @@ const canvas = document.querySelector("canvas");
 canvas.width = 800;
 canvas.height = 600;
 
-// Starta canvar rit-api
+// Starta canvas rit-api
 var ctx = canvas.getContext("2d");
 
 /*****************************************/
@@ -24,10 +24,10 @@ var i = 0;
 
 // För att rita ut tank-figuren
 function ritaTank() {
-    // Första rutan
+    // Rita en ruta
     ctx.drawImage(tank, 32 * tankRutor[i], 0, 32, 32, 100, 100, 32, 32);
 
-    // Hoppa till nästa
+    // Hoppa till nästa ruta
     i++;
     if (i > tankRutor.length - 1) {
         i = 0;
