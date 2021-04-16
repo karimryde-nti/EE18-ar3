@@ -63,14 +63,27 @@ var lager2 = [
 var kartbild = new Image();
 kartbild.src = "./forest_tiles.png";
 
+// Figuren
+var figur = {
+    bild: new Image(),
+    x: 100,
+    y: 100,
+    går: false,
+    rad: 0,
+    i: 0
+}
+figur.bild.src = "./pokemon-red-sprite.png";
+
 /*****************************************/
 /*          Animationsloopen             */
 /*****************************************/
 function loopen() {
     ctx.clearRect(0, 0, 800, 600);
 
-    ritaLager1();
-    ritaLager2();
+    //ritaLager1();
+    //ritaLager2();
+
+    ritaFigur();
 
     requestAnimationFrame(loopen);
 }
@@ -126,3 +139,51 @@ function ritaLager2() {
         }
     }
 }
+
+// Rit ut figuren
+function ritaFigur() {
+    // Plocka ut rätt ruta
+    var x = figur.i * 64;
+    var y = figur.rad * 64;
+
+    // Rita ut rutan
+    ctx.drawImage(figur.bild, x, y, 64, 64, figur.x, figur.y, 64, 64);
+
+    // Byta till nästa ruta
+    if (figur.går) {
+        figur.i++;
+    }
+
+    // Börja om från början
+    if (figur.i > 4) {
+        figur.i = 0;
+    }
+}
+
+/*****************************************/
+/*          Interaktivitet               */
+/*****************************************/
+window.addEventListener("keydown", function (e) {
+    figur.går = true;
+    switch (e.code) {
+        case "ArrowDown":
+            figur.y += 5;
+            figur.rad = 0;
+            break;
+        case "ArrowUp":
+            figur.y -= 5;
+            figur.rad = 3;
+            break;
+        case "ArrowLeft":
+            figur.x -= 5;
+            figur.rad = 1;
+            break;
+        case "ArrowRight":
+            figur.x += 5;
+            figur.rad = 2;
+            break;
+    }
+})
+window.addEventListener("keyup", function () {
+    figur.går = false;
+})
