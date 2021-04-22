@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Geolocation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="kontainer">
+        <h1>Geolocation</h1>
+        <p></p>
+    </div>
+    <script>
+        // Hitta element
+        const p = document.querySelector("p");
+
+        // Är geolocation påslagen?
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(visaPosition);
+        } else {
+            p.textContent = "Kan inte hitta din position. Din webbläsare är för gammal!";
+        }
+
+        // Skriv ut positionen
+        function visaPosition(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+
+            p.textContent = "Din position är: latitude = " + latitude + ", longitude = " + longitude;
+        }
+    </script>
+</body>
+</html>
