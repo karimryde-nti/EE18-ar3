@@ -27,7 +27,34 @@
             var latitude = position.coords.latitude;
             var longitude = position.coords.longitude;
 
-            p.textContent = "Din position är: latitude = " + latitude + ", longitude = " + longitude;
+            p.innerHTML = "Din position är: latitude = " + latitude + ", longitude = " + longitude + "<br>";
+
+            // Omvandla lat & lon till ett POST-paket
+            // Simulerar ett formulär
+            var postData = new FormData();
+            postData.append("lat", latitude);
+            postData.append("lon", longitude);
+
+            // Anropa ett backend-skript
+            // Samtidigt skicka lat & lon
+            // Ta emot svaret
+            fetch("./backend.php", {
+                method: "POST",                 // Ungefär som ett formulär
+                body: postData
+            })
+/*             .then(response => {
+                console.log(response.text());
+            })  */ 
+            
+            // Tar emot json-paket
+            .then(response => response.json())  // Tar emot json-paket
+            .then(stops => {                    // stops = hållplatser
+                // Loopa igenom array stops
+                stops.forEach(stop => {
+                    console.log(stop.name, stop.lat, stop.lon);
+                    p.innerHTML += stop.name + ": " + stop.lat + ", " + stop.lon + "<br>";
+                });
+            })
         }
     </script>
 </body>
