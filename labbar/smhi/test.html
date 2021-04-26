@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Testar chartjs.org</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="./smhi.css">
+</head>
+<body>
+    <div class="kontainer">
+        <canvas id="myChart"></canvas>
+    </div>
+    <script>
+        // === include 'setup' then 'config' above ===
+        const labels = [
+            'Måndag',
+            'Tisdag',
+            'Onsdag',
+            'Torsdag',
+            'Fredag',
+            'Lördag',
+        ];
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Tiodagars prognos',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [2, 10, 7, 9, 10, 10, 8],
+                tension: 0.5
+            }]
+        };
+        const config = {
+            type: 'line',
+            data,
+            options: {}
+        };
+
+        var myChart = new Chart(
+            document.querySelector('#myChart'),
+            config
+        );
+    </script>
+</body>
+</html>

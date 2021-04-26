@@ -1,0 +1,10 @@
+body {
+    background: #DDD;
+}
+
+.kontainer {
+    background: #FFF;
+    width: 1000px;
+    margin: auto;
+    padding: 2em;
+}
