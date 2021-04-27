@@ -33,7 +33,7 @@ var figur = {
     poäng: 0,
     bild: new Image()
 }
-figur.bild.src = "../nyckelpiga.png";
+figur.bild.src = "../bilder/nyckelpiga.png";
 
 // Objektet mynt
 var mynt = {
@@ -41,7 +41,7 @@ var mynt = {
     kolumn: 0,
     bild: new Image()
 }
-mynt.bild.src = "./coin.png";
+mynt.bild.src = "../bilder/coin.png";
 
 // Rita kartan
 function ritaKartan() {
@@ -126,9 +126,9 @@ function loopen() {
 loopen()
 
 // Lyssna på piltangenter
-window.addEventListener("keypress", function(e) {
+window.addEventListener("keydown", function(e) {
     switch (e.code) {
-        case "Numpad2": // Pil nedåt
+        case "ArrowDown": // Pil nedåt
             // Är det 0 (gång) i rutan nedanför?
             if (karta[figur.rad + 1][figur.kolumn] == 0) {
                 // Isåfall flytta dit
@@ -136,7 +136,7 @@ window.addEventListener("keypress", function(e) {
             }
             figur.rotation = 180;
             break;
-        case "Numpad8": // Pil uppåt
+        case "ArrowUp": // Pil uppåt
             // Är det 0 i rutan ovanför?
             if (karta[figur.rad - 1][figur.kolumn] == 0) {
                 // Isåfall flytta dit
@@ -144,13 +144,13 @@ window.addEventListener("keypress", function(e) {
             }
             figur.rotation = 0;
             break;
-        case "Numpad4": // Pil vänster
+        case "ArrowLeft": // Pil vänster
             if (karta[figur.rad][figur.kolumn - 1] == 0) {
                 figur.kolumn--;
             }
             figur.rotation = 270;
             break;
-        case "Numpad6": // Pil höger
+        case "ArrowRight": // Pil höger
             if (karta[figur.rad][figur.kolumn + 1] == 0) {
                 figur.kolumn++;
             }

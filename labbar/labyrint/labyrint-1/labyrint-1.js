@@ -31,7 +31,7 @@ var figur = {
     rotation: 0,
     bild: new Image()
 }
-figur.bild.src = "../nyckelpiga.png";
+figur.bild.src = "../bilder/nyckelpiga.png";
 
 // Rita kartan
 function ritaKartan() {
@@ -78,21 +78,21 @@ function loopen() {
 loopen()
 
 // Lyssna på piltangenter
-window.addEventListener("keypress", function (e) {
+window.addEventListener("keydown", function (e) {
     switch (e.code) {
-        case "Numpad2": // Pil nedåt
+        case "ArrowDown": // Pil nedåt
             figur.y += 50;
             figur.rotation = 180;
             break;
-        case "Numpad8": // Pil uppåt
+        case "ArrowUp": // Pil uppåt
             figur.y -= 50;
             figur.rotation = 0;
             break;
-        case "Numpad4": // Pil vänster
+        case "ArrowLeft": // Pil vänster
             figur.x -= 50;
             figur.rotation = 270;
             break;
-        case "Numpad6": // Pil höger
+        case "ArrowRight": // Pil höger
             figur.x += 50;
             figur.rotation = 90;
             break;
