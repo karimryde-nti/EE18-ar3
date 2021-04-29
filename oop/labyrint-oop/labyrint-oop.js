@@ -31,30 +31,71 @@ var karta = [
 /*                Objekten               */
 /*****************************************/
 
-// Spelaren
-var spelare = {
-    rad: 0,
-    kolumn: 0,
-    rotation: 0,
-    bild: new Image()
+// Spelare class (OOP) = mall för ett objekt
+class Spelare {
+    constructor() {
+        this.rad = 0;
+        this.kolumn = 0;
+        this.rotation = 0;
+        this.bild = new Image();
+        this.bild.src = "../bilder/nyckelpiga.png";
+    }
+    rita() {
+        ctx.save();
+        ctx.translate(this.kolumn * 50 + 25, this.rad * 50 + 25);
+        ctx.rotate(this.rotation / 180 * Math.PI);
+        ctx.drawImage(this.bild, -25, -25, 50, 50);
+        ctx.restore();
+    }
 }
-spelare.bild.src = "../bilder/nyckelpiga.png";
+// Nu skapar vi objektet
+var spelare = new Spelare();
 
-// Mynt
-var mynt = {
-    rad: 1,
-    kolumn: 1,
-    bild: new Image()
-}
-mynt.bild.src = "../bilder/coin.png";
+// Var finns spelaren
+// spelare.rad -> på vilken rad
+// spelare.kolumn -> på viljen kolumn
+// spelare.rita()
 
-// Monster
-var monster = {
-    rad: 10,
-    kolumn: 10,
-    bild: new Image()
+// Klassen Mynt 
+class Mynt {
+    constructor() {
+        this.rad = Math.floor(Math.random() * 12);
+        this.kolumn = Math.floor(Math.random() * 16);
+        this.bild = new Image();
+        this.bild.src = "../bilder/coin.png";
+    }
+    rita() {
+        ctx.drawImage(this.bild, this.kolumn * 50, this.rad * 50, 50, 50);
+    }
 }
-monster.bild.src = "../bilder/monster.png";
+
+// Skapa en array för mynt
+var mynten = [];
+
+// Fyll på med 5 mynt
+for (let i = 0; i < 5; i++) {
+    mynten.push(new Mynt());
+}
+
+// Klassen Monster
+class Monster {
+    constructor() {
+        this.rad = Math.floor(Math.random() * 12);
+        this.kolumn = Math.floor(Math.random() * 16);
+        this.bild = new Image();
+        this.bild.src = "../bilder/monster.png";
+    }
+    rita() {
+        ctx.drawImage(this.bild, this.kolumn * 50, this.rad * 50, 50, 50);
+    }
+}
+
+// En array för monsters
+var monsters = [];
+// Fyll på med 3 monster
+for (let i = 0; i < 3; i++) {
+    monsters.push(new Monster());
+}
 
 /*****************************************/
 /*              Funktioner               */
@@ -75,34 +116,20 @@ function ritaKartan() {
     }
 }
 
-// Rita ut spelaren
-function ritaSpelare() {
-    ctx.save();
-    ctx.translate(spelare.kolumn * 50 + 25, spelare.rad * 50 + 25);
-    ctx.rotate(spelare.rotation / 180 * Math.PI);
-    ctx.drawImage(spelare.bild, -25, -25, 50, 50);
-    ctx.restore();
-}
-
-// Rita mynt
-function ritaMynt() {
-    ctx.drawImage(mynt.bild, mynt.kolumn * 50, mynt.rad * 50, 50, 50);
-}
-
-// Rita monster
-function ritaMonster() {
-    ctx.drawImage(monster.bild, monster.kolumn * 50, monster.rad * 50, 50, 50);
-}
-
 // Animationsloopen
 function loopen() {
     // Sudda ut canvas
     ctx.clearRect(0, 0, 800, 600);
 
     ritaKartan();
-    ritaSpelare();
-    ritaMynt();
-    ritaMonster();
+
+    spelare.rita();
+
+    // Rita ut alla mynt
+    mynten.forEach(mynt => mynt.rita());
+
+    // Rita ut alla monster
+    monsters.forEach(monster => monster.rita());
 
     requestAnimationFrame(loopen);
 }
