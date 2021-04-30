@@ -28,7 +28,7 @@ $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_STRING);
 if ($username && $password && $email) {
     
     // Kontrollera att username följer reglerna
-    validateUsername($username);
+    validateUsername($username, $resultat);
 
     // Kontrollera att lösenordet följer reglerna
     validatePassword($password);
