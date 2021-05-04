@@ -75,17 +75,11 @@ if ($username && $password && $email) {
         <h1>Create New User</h1>
         <form action="#" method="post">
             <label>Username <input type="text" name="username" required></label>
-            <?php
-            showErrors('username');
-            ?>
+            <?php showErrors('username'); ?>
             <label>Password <input type="password" name="password" required></label>
-            <?php
-            showErrors('password');
-            ?>
+            <?php showErrors('password'); ?>
             <label>Email <input type="email" name="email" required></label>
-            <?php
-            showErrors('email');
-            ?>
+            <?php showErrors('email'); ?>
             <button>Submit</button>
         </form>
     </div>
